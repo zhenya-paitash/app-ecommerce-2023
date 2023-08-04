@@ -23,7 +23,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { AlertModal } from "@/components/modals/alert-modal";
-import { useOrigin } from '@/hooks/use-origin'
 import ImageUpload from "@/components/ui/image-upload";
 
 const formSchema = z.object({
@@ -38,9 +37,8 @@ interface BillboardFormProps {
 }
 
 export const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
-  const params = useParams();
   const router = useRouter();
-  const origin = useOrigin();
+  const params = useParams();
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -62,15 +60,13 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => 
     try {
       setLoading(true);
       if (initialData) {
-        const response: AxiosResponse = await axios.patch(`/api/${params.storeId}/billboards/${params.bilboardId}`, data);
-        console.log('update');
-        console.log(response.data);
+        await axios.patch(`/api/${params.storeId}/billboards/${params.billboardId}`, data);
       } else {
-        const response: AxiosResponse = await axios.post(`/api/${params.storeId}/billboards`, data);
+        await axios.post(`/api/${params.storeId}/billboards`, data);
       }
 
       router.refresh();
-      // router.push(`/${params.storeId}/billboards`);
+      router.push(`/${params.storeId}/billboards`);
       toast.success(toastMessage);
     } catch (error) {
       toast.error('Something went wrong');
@@ -82,9 +78,9 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => 
   const onDelete = async () => {
     try {
       setLoading(true);
-      const response: AxiosResponse = await axios.delete(`/api/${params.storeId}/billboards/${params.billboardId}`);
+      await axios.delete(`/api/${params.storeId}/billboards/${params.billboardId}`);
       router.refresh();
-      router.push('/');
+      router.push(`/${params.storeId}/billboards`);
       toast.success(`Billboard removed!`);
     } catch (error) {
       toast.error('Make sure you remove all categories using this billboard first.');
@@ -174,8 +170,6 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => 
           >{action}</Button>
         </form>
       </Form>
-
-      <Separator />
     </>
   );
 }

@@ -28,7 +28,6 @@ export async function PATCH(
   { params }: { params: { storeId: string, billboardId: string } }
 ) {
   try {
-    console.log(params);
     const { userId } = auth();
     if (!userId) return new NextResponse('Unauthenticated', { status: 401 });
 
