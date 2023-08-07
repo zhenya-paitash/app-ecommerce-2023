@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 
 import prismadb from "@/lib/prismadb";
+import { Heading } from "@/components/ui/heading";
 
 interface DashboardPageProps {
   params: {
@@ -19,8 +20,13 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({
   if (!store) redirect('/');
 
   return (
-    <div>
-      Active Store: {store.name}
+    <div className="flex-col">
+      <div className="flex-1 space-y-4 p-8 pt-6">
+        <Heading
+          title={store.name}
+          description="Overview your store."
+        />
+      </div>
     </div>
   );
 }
