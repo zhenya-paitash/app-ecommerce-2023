@@ -3,11 +3,12 @@
 import { useParams, usePathname } from "next/navigation";
 import {
   AppWindow,
+  BaggageClaim,
   Home,
   Palette,
   Ruler,
   Settings,
-  ShoppingCart,
+  ShoppingBag,
   Tag,
 } from 'lucide-react';
 
@@ -54,9 +55,15 @@ export function MainNav({
     },
     {
       label: 'Products',
-      icon: <ShoppingCart />,
+      icon: <ShoppingBag />,
       href: `/${params.storeId}/products`,
       active: pathname === `/${params.storeId}/products`
+    },
+    {
+      label: 'Orders',
+      icon: <BaggageClaim />,
+      href: `/${params.storeId}/orders`,
+      active: pathname === `/${params.storeId}/orders`
     },
     {
       label: 'Settings',
