@@ -7,6 +7,7 @@ import { Product } from "@/types";
 
 import IconButton from "@/components/ui/icon-button";
 import Currency from "@/components/ui/currency";
+import { useRouter } from "next/navigation";
 
 interface ProductCardProps {
   data: Product;
@@ -15,9 +16,16 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({
   data
 }) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/product/${data.id}`);
+  }
+
   return (
     <div
       className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4"
+      onClick={handleClick}
     >
       {/* IMAGES and ACTIONS */}
       <div className="relative aspect-square rounded-xl bg-gray-100">
