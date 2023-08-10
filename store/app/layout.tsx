@@ -5,6 +5,7 @@ import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 
 import './globals.css'
+import ModalProvider from '@/providers/modal-provider'
 
 const font = Urbanist({ subsets: ['latin'] })
 
@@ -25,6 +26,8 @@ export default function RootLayout({
       </head>
 
       <body className={font.className}>
+        <ModalProvider />
+
         <Navbar />
         {children}
         <Footer />

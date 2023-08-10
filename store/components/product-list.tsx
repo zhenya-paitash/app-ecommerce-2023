@@ -1,3 +1,5 @@
+"use client";
+
 import { Product } from "@/types";
 
 import NoResults from "@/components/ui/no-results"
