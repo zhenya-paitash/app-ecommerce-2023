@@ -5,19 +5,12 @@ import { useSearchParams } from "next/navigation";
 import axios, { AxiosResponse } from "axios";
 import { toast } from "react-hot-toast";
 
-import { Product } from "@/types";
 import useCart from "@/hooks/use-cart";
 
 import Button from "@/components/ui/button";
 import Currency from "@/components/ui/currency";
 
-interface SummaryProps {
-  data: Product[];
-}
-
-const Summary: React.FC<SummaryProps> = ({
-  data
-}) => {
+const Summary = () => {
   const searchParams = useSearchParams();
 
   const items = useCart(state => state.items);
@@ -34,7 +27,7 @@ const Summary: React.FC<SummaryProps> = ({
     }
   }, [searchParams, removeAll]);
 
-  const totalPrice = items.reduce((total, cur) => total + Number(cur.price), 0)
+  const totalPrice = items.reduce((total, cur) => total + Number(cur.price), 0);
 
   const onCheckout = async () => {
     const response: AxiosResponse = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
@@ -43,8 +36,6 @@ const Summary: React.FC<SummaryProps> = ({
 
     window.location = response.data.url;
   }
-
-  if (!data) return null;
 
   return (
     <div className="

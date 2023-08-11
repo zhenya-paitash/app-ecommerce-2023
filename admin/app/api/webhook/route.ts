@@ -32,7 +32,7 @@ export async function POST(req: Request) {
     address?.postal_code,
     address?.country,
   ];
-  const addressString = addressComponents.filter(c => c !== null).join(`, `);
+  const addressString = addressComponents.filter(c => c !== null).join(", ");
 
   if (event.type === "checkout.session.completed") {
     const order = await prismadb.order.update({
@@ -49,11 +49,11 @@ export async function POST(req: Request) {
       }
     });
 
-    const productIds = order.orderItems.map(order => order.productId);
+    const productIds = order.orderItems.map(orderItem => orderItem.productId);
     await prismadb.product.updateMany({
       where: {
         id: {
-          in: [...productIds]
+          in: [...productIds],
         },
       },
       data: {
