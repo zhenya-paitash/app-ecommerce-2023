@@ -38,7 +38,7 @@ const CartPage = () => {
               </ul>
             </div>
 
-            <Summary data={cart.items} />
+            <Summary />
           </div>
         </div>
       </Container>
