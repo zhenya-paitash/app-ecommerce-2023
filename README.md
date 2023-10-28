@@ -1,5 +1,7 @@
 # app-ecommerce-2023
 
+[![Static Badge](https://img.shields.io/badge/license-MIT-blue)](https://choosealicense.com/licenses/mit/)  
+
 ## _About_
 
 **Name:** E-Commerce Website  
@@ -477,3 +479,8 @@ _Preview:_
     88~~~88 88~~~   88~~~   C8888D 88~~~~~ 8b      88    88 88  88  88 88  88  88 88~~~~~ 88`8b   8b      88~~~~~ C8888D  .88'   88 d' 88  .88'     ~~~b. 
     88   88 88      88             88.     Y8b  d8 `8b  d8' 88  88  88 88  88  88 88.     88 `88. Y8b  d8 88.            j88.    `88  d8' j88.    db   8D 
     YP   YP 88      88             Y88888P  `Y88P'  `Y88P'  YP  YP  YP YP  YP  YP Y88888P 88   YD  `Y88P' Y88888P        888888D  `Y88P'  888888D Y8888P' 
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
